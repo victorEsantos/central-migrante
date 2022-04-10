@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Usuario } from '../model/usuario.model';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Usuario } from '../model/usuario.model';
 })
 export class UsuarioService {
 
-  apiUrl = 'localhost:3333/usuarios';
+  apiUrl = `${environment.API}usuarios`;
   httpOptions = {
     heeaders: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -19,7 +20,7 @@ export class UsuarioService {
     private httpClient: HttpClient
   ) { }
 
-  public getAllUsuarios(): Observable<Usuario[]>{
+  public getAllUsuarios(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(this.apiUrl)
   }
 }

@@ -8,17 +8,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { ToolbarComponent } from './views/toolbar/toolbar.component';
-import { UsuariosListComponent } from './views/usuarios-list/usuarios-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
+import { UsuarioListComponent } from './views/usuario-list/usuario-list.component';
+import { LoginComponent } from './views/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ToolbarComponent,
-    UsuariosListComponent
+    UsuarioListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
