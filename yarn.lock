@@ -126,6 +126,15 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/cdk@13.3.2":
+  version "13.3.2"
+  resolved "https://npm.totvs.io/@angular%2fcdk/-/cdk-13.3.2.tgz#a6c33edd8b0ad6ce077d01f70a251103fea34d0d"
+  integrity sha512-Rb+SvQpjXqa0kedk/6nG57f8dC4uG1q35SR6mt6jCz84ikyS2zhikVbzaxLdG15uDvq1+N5Vx3NTSgH19XUSug==
+  dependencies:
+    tslib "^2.3.0"
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~14.0.0-next.4":
   version "14.0.0-next.4"
   resolved "https://npm.totvs.io/@angular%2fcli/-/cli-14.0.0-next.4.tgz#7ebbac29fcf38e0b576083b18a672d1ced424280"
@@ -192,6 +201,13 @@
   version "14.0.0-next.11"
   resolved "https://npm.totvs.io/@angular%2fforms/-/forms-14.0.0-next.11.tgz#27a96bb9685403a26c5873408e99afaaf8f612bd"
   integrity sha512-hE1OqYxDCXqAZ0/K5MEGPn/jHC0pzdhen7ivGWxh5NEztOv1oShOXdvKv6CZVxqXgvI71Fb4qsWNatMgcrfcXA==
+  dependencies:
+    tslib "^2.3.0"
+
+"@angular/material@13.3.2":
+  version "13.3.2"
+  resolved "https://npm.totvs.io/@angular%2fmaterial/-/material-13.3.2.tgz#ea6743da2b362c553a30eecc93b52fdd7941c771"
+  integrity sha512-agIuNcN1wO05ODEXc0wwrMK2ydnhPGO8tcBBCJXrDgiA/ktwm+WtfOsiZwPoev7aJ8pactVhxT5R0bJ6vW2SmA==
   dependencies:
     tslib "^2.3.0"
 
@@ -4817,6 +4833,11 @@ parse5-sax-parser@^6.0.1:
   dependencies:
     parse5 "^6.0.1"
 
+parse5@^5.0.0:
+  version "5.1.1"
+  resolved "https://npm.totvs.io/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
+  integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
+
 parse5@^6.0.1:
   version "6.0.1"
   resolved "https://npm.totvs.io/parse5/-/parse5-6.0.1.tgz#e1a1c085c569b3dc08321184f19a39cc27f7c30b"
@@ -6170,7 +6191,7 @@ typed-assert@^1.0.8:
   resolved "https://npm.totvs.io/typed-assert/-/typed-assert-1.0.9.tgz#8af9d4f93432c4970ec717e3006f33f135b06213"
   integrity sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==
 
-typescript@~4.7.0:
+typescript@4.6.3:
   version "4.6.3"
   resolved "https://npm.totvs.io/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
   integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
