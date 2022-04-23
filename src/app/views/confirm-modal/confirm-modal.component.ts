@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal'
+
 
 @Component({
   selector: 'app-confirm-modal',
@@ -16,7 +16,7 @@ export class ConfirmModalComponent implements OnInit {
 
   @Input() okTxt: string = "OK";
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
