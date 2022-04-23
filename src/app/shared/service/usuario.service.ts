@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../model/usuario.model';
 
@@ -22,5 +22,9 @@ export class UsuarioService {
 
   public getAllUsuarios(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(this.apiUrl)
+  }
+
+  public create(usuario: Usuario) {
+    return this.httpClient.post(this.apiUrl + "/register", usuario).pipe(take(1));
   }
 }

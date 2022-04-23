@@ -16,6 +16,7 @@ import { LoginComponent } from './views/login/login.component';
 import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioNovoComponent } from './views/usuario-novo/usuario-novo.component';
+import { ConfirmModalComponent } from './views/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UsuarioNovoComponent } from './views/usuario-novo/usuario-novo.componen
     UsuarioListComponent,
     LoginComponent,
     EditarUsuarioComponent,
-    UsuarioNovoComponent
+    UsuarioNovoComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,

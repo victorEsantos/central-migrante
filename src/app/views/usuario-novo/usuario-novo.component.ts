@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsuarioService } from 'src/app/shared/service/usuario.service';
+import { MustMatch } from './must-match';
 
 @Component({
   selector: 'app-usuario-novo',
@@ -13,26 +15,37 @@ export class UsuarioNovoComponent implements OnInit {
     email: [null, [Validators.required, Validators.email]]
   });
 
-  submmited: Boolean = false;
+  submitted: Boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private service: UsuarioService) { }
 
   ngOnInit(): void {
 
     this.form = this.fb.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
-      email: [null, [Validators.required, Validators.email]]
-    })
+      user: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
+      email: [null, [Validators.required, Validators.email]],
+      senha: ['', [Validators.required, Validators.minLength(6)]],
+      confirmaSenha: ['', Validators.required],
+    },
+      {
+        validator: MustMatch('senha', 'confirmaSenha')
+      });
   }
 
+  get f() { return this.form.controls; }
+
   onSubmit(): void {
-    this.submmited = true;
+    this.submitted = true;
 
     console.log(this.form.value)
     if (this.form.valid) {
-      console.log('submittt')
+      this.service.create(this.form.value).subscribe(
+        success => console.log("sucess"),
+        error => console.error(error),
+        () => console.log("request completado")
+      );
     }
-
   }
 
   hasError(field: string) {

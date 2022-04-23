@@ -8,7 +8,6 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">nome</th>
-          <th scope="col">usuario</th>
           <th scope="col">email</th>
           <th scope="col">acoes</th>
         </tr>
@@ -17,11 +16,11 @@
         <tr *ngFor="let usuario of usuarios">
           <th scope="row">{{ usuario.id }}</th>
           <td>{{ usuario.nome }}</td>
-          <td>{{ usuario.user }}</td>
           <td>{{ usuario.email }}</td>
           <td>
-            <button class="btn-submit">ver</button>
-            <button class="btn" [routerLink]="['editarUsuario']">editar</button>
+            <button class="btn btn-outline-primary btn-sm">ver</button>
+            &nbsp;
+            <button class="btn btn-outline-success btn-sm" [routerLink]="['/editarUsuario']">editar</button>
           </td>
         </tr>
       </tbody>
