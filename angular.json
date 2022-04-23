@@ -104,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "central-migrante"
+  "defaultProject": "central-migrante",
+  "cli": {
+    "analytics": "a6124841-d00a-4193-b25b-a7ccb5da22fb"
+  }
 }

@@ -1,4 +1,11 @@
 .example-spacer {
     flex: 1 1 auto;
   }
-  
+
+  .navbar-custom{
+    background-color: rgb(27, 54, 95);
+  }
+
+  a{
+    color: white;
+  }

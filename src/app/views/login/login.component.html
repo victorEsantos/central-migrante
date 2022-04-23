@@ -1,13 +1,13 @@
 
 
-  <div class="box-login row col-8">
+  <div class="box-login row col-12">
 
-    <div class="col mt-4 mb-4 ml-3">
-      <div class="text-center">
-        <h1 class="mt-1 mb-5 pb-1 text-white">Bem vindo</h1>
+    <div class="col-lg-6 col-md-12">
+      <div class="text-center mt-4">
+        <h1 class="mt-1 mb-3 pb-1 text-white">Bem vindo</h1>
       </div>
       <!-- Email input -->
-      <div class="form-outline mb-4 text-white">
+      <div class="form-outline text-white">
         <span>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry.
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <form class="form-login col mt-4 mb-4 mr-3">
+    <form class="form-login col mt-4 mb-4 mx-4">
       <div class="text-center">
         <h1 class="mt-1 mb-5 pb-1">Login</h1>
       </div>
@@ -38,7 +38,7 @@
 
       <!-- Register buttons -->
       <div class="text-center">
-        <p>Não tem registro? <a href="#!">Registre-se</a></p>
+        <p>Não tem registro? <a [routerLink]="['novoUsuario']">Registre-se</a></p>
       </div>
     </form>
   </div>

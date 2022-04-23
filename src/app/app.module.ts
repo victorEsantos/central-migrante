@@ -13,6 +13,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuarioListComponent } from './views/usuario-list/usuario-list.component';
 import { LoginComponent } from './views/login/login.component';
+import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsuarioNovoComponent } from './views/usuario-novo/usuario-novo.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { LoginComponent } from './views/login/login.component';
     HomeComponent,
     ToolbarComponent,
     UsuarioListComponent,
-    LoginComponent
+    LoginComponent,
+    EditarUsuarioComponent,
+    UsuarioNovoComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,9 @@ import { LoginComponent } from './views/login/login.component';
     MatIconModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

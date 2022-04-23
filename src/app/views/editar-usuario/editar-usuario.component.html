@@ -1,0 +1,56 @@
+<h1 class="text-center mt-4">Editar Usuario</h1>
+<form class="needs-validation" novalidate [formGroup]="form">
+  <div class="form-group">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome"
+      [ngClass]="{'is-invalid': submmited && hasError('nome')}">
+
+    <div *ngIf="hasError('nome')" class="invalid-feedback">
+      <div *ngIf="hasError('nome')?.['required']">
+        Nome não pode ser vazio
+      </div>
+      <div *ngIf="hasError('nome')?.['minlength']">
+        No mínimo 3 caracteres
+      </div>
+      <div *ngIf="hasError('nome')?.['maxlength']">
+        No Máximo 250 caracteres
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="email" formControlName="email"
+      [ngClass]="{'is-invalid': submmited && hasError('email')}">
+
+    <div *ngIf="hasError('email')" class="invalid-feedback">
+      <div *ngIf="hasError('email')?.['required']">
+        Não pode ser vazio
+      </div>
+      <div *ngIf="hasError('email')">
+        Email invalido
+      </div>
+    </div>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-lg-6 col-md-12">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+
+    <div class="col-lg-6 col-md-12">
+      <label for="exampleInputPassword1">Confirm PassWord</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <button class="btn btn-primary btn-block" type="submit" (click)="onSubmit()">Salvar</button>
+  </div>
+
+</form>
