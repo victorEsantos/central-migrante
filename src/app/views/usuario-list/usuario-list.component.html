@@ -20,7 +20,7 @@
           <td>
             <button class="btn btn-outline-primary btn-sm">ver</button>
             &nbsp;
-            <button class="btn btn-outline-success btn-sm" [routerLink]="['/editarUsuario']">editar</button>
+            <button class="btn btn-outline-success btn-sm" [routerLink]="['/editarUsuario']" (click)="onEdit(usuario.id)">editar</button>
           </td>
         </tr>
       </tbody>

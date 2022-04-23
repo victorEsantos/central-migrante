@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/app/shared/service/usuario.service';
 import { MustMatch } from './must-match';
+import {AlertModelService} from "../../shared/service/alert-model.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-usuario-novo',
@@ -17,7 +19,8 @@ export class UsuarioNovoComponent implements OnInit {
 
   submitted: Boolean = false;
 
-  constructor(private fb: FormBuilder, private service: UsuarioService) { }
+  constructor(private fb: FormBuilder, private service: UsuarioService, private modal: AlertModelService,
+              private location: Location) { }
 
   ngOnInit(): void {
 
@@ -41,8 +44,12 @@ export class UsuarioNovoComponent implements OnInit {
     console.log(this.form.value)
     if (this.form.valid) {
       this.service.create(this.form.value).subscribe(
-        success => console.log("sucess"),
-        error => console.error(error),
+        success => {
+          this.modal.showAlertSuccess("Criado com sucesso!");
+
+          this.location.back();
+        },
+        error => this.modal.showAlertDanger("Erro ao criar, tente novamente"),
         () => console.log("request completado")
       );
     }
