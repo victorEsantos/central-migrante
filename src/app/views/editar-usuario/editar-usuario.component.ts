@@ -6,6 +6,8 @@ import {Usuario} from "../../shared/model/usuario.model";
 import {AlertModelService} from "../../shared/service/alert-model.service";
 import {Location} from "@angular/common";
 import {MustMatch} from "../usuario-novo/must-match";
+import {EnderecoService} from "../../shared/service/endereco.service";
+import {Endereco} from "../../shared/model/endereco.model";
 
 @Component({
   selector: 'app-editar-usuario',
@@ -39,6 +41,13 @@ export class EditarUsuarioComponent implements OnInit {
       genero: [null],
       corRaca: [null],
 
+      hasEscolaridade: ["true"],
+      hasEnsinoFundamental: [null],
+      hasEnsinoMedio: [null],
+      hasEnsinoSuperior: [null],
+      hasPosGraduacao: [null],
+
+      enderecoId: [null],
       estado: [null],
       cidade: [null],
       rua: [null],
@@ -51,18 +60,28 @@ export class EditarUsuarioComponent implements OnInit {
     });
 
   submitted: boolean = false;
+  isNovoEndereco: boolean = false;
 
-  constructor(private fb: FormBuilder, private service: UsuarioService, private modal: AlertModelService,
-              private location: Location, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder,
+              private usuarioService: UsuarioService,
+              private modelService: AlertModelService,
+              private enderecoService: EnderecoService,
+              private location: Location,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
 
+
     this.route.params.subscribe(
       (params: any) => {
         const id = params['id'];
-        const usuario$ = this.service.getUsuarioById(id);
+        const usuario$ = this.usuarioService.getUsuarioById(id);
         usuario$.subscribe(usuario => {
+          if (usuario.Endereco == undefined) {
+            console.log("UNDEFINEEEEEEEEEEEEEEEEEEEEEEEEEEED")
+            this.isNovoEndereco = true;
+          }
           this.updateForm(usuario);
         })
       }
@@ -70,6 +89,7 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   updateForm(usuario: Usuario) {
+    console.log(usuario);
     this.form.patchValue({
       id: usuario.id,
       nome: usuario.nome,
@@ -95,43 +115,110 @@ export class EditarUsuarioComponent implements OnInit {
       genero: usuario.genero,
       corRaca: usuario.corRaca,
 
-      estado: usuario.estado,
-      cidade: usuario.cidade,
-      rua: usuario.rua,
-      numero: usuario.numero,
-      cep: usuario.cep
+
+      hasEscolaridade: this.safeBooleanToString((usuario.hasEnsinoFundamental == null && usuario.hasEnsinoMedio == null &&
+                                                     usuario.hasEnsinoSuperior == null && usuario.hasPosGraduacao == null)),
+
+      hasEnsinoFundamental: this.safeBooleanToString(usuario.hasEnsinoFundamental),
+      hasEnsinoMedio: this.safeBooleanToString(usuario.hasEnsinoMedio),
+      hasEnsinoSuperior: this.safeBooleanToString(usuario.hasEnsinoSuperior),
+      hasPosGraduacao: this.safeBooleanToString(usuario.hasPosGraduacao),
+
+      enderecoId: usuario.enderecoId,
+      estado: usuario.Endereco?.estado,
+      cidade: usuario.Endereco?.cidade,
+      rua: usuario.Endereco?.rua,
+      numero: usuario.Endereco?.numero,
+      cep: usuario.Endereco?.cep
     })
 
   }
 
-  get f() {
-    return this.form.controls;
+  private safeBooleanToString(boolean: boolean): string | null {
+    if(boolean == undefined){
+      return  null;
+    }
+    return boolean == true ? 'true' : 'false';
   }
 
   onSubmit(): void {
     this.submitted = true;
 
     console.log(this.form.value)
-    if (this.form.valid) {
-      this.service.update(this.form.value).subscribe(
-        () => {
-          this.modal.showAlertSuccess("Salvo com sucesso!");
 
-          // this.location.back();
-        },
-        () => this.modal.showAlertDanger("Erro ao criar, tente novamente"),
+    if (this.form.valid) {
+      this.usuarioService.update(this.form.value).subscribe(
+        () => console.log("Etapa salva"),
+        () => this.modelService.showAlertDanger("Erro ao criar, tente novamente"),
         () => console.log("request completado")
       );
+    }
+
+  }
+
+  onSubmitFinal(): void {
+    if (this.form.valid) {
+      const endereco: Endereco = {
+        id: this.form.value.enderecoId,
+        estado: this.form.value.estado,
+        cidade: this.form.value.cidade,
+        rua: this.form.value.rua,
+        numero: this.form.value.numero,
+        cep: this.form.value.cep,
+      }
+
+      if (this.isNovoEndereco) {
+        console.log("criando endereco")
+        console.log(endereco)
+        this.enderecoService.create(endereco).subscribe(
+          data => {
+            this.modelService.showAlertSuccess("Dados salvos com sucesso!", 4000);
+            this.form.patchValue(
+              {
+                enderecoId: data
+              }
+            )
+
+            this.onSubmit();
+
+            this.location.back();
+          },
+          () => this.modelService.showAlertDanger("Erro ao criar, tente novamente"),
+          () => console.log("request completado")
+        );
+      } else {
+        console.log("editando endereco")
+        this.enderecoService.update(endereco)
+        this.modelService.showAlertSuccess("Dados salvos com sucesso!", 4000);
+        this.location.back();
+      }
     }
   }
 
   onCancel(): void {
-    this.form.reset();
+    this.location.back();
   }
 
   hasError(field: string) {
     return this.form.get(field)?.errors
-
   }
 
+  onSemEscolaridade() {
+    this.form.patchValue(
+      {
+        hasEnsinoFundamental: null,
+        hasEnsinoMedio: null,
+        hasEnsinoSuperior: null,
+        hasPosGraduacao: null,
+      }
+    )
+  }
+
+  onComEscolaridade() {
+    this.form.patchValue(
+      {
+        hasEscolaridade: null
+      }
+    )
+  }
 }

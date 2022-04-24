@@ -1,10 +1,11 @@
+import {Endereco} from "./endereco.model";
+
 export interface Usuario {
   id: number;
   nome: string;
   email: string;
   user: string;
   senha: string;
-  enderecoId: number;
   dataNascimento: Date;
   nacionalidade: string;
   cidadeNascimento: string;
@@ -12,7 +13,7 @@ export interface Usuario {
   corRaca: string;
   estadoOndeAtravessouFronteira: string;
   viaDeEntrada: string;
-  hasFamiliaresNoBrasil: string;
+  hasFamiliaresNoBrasil: boolean;
   telefone: string;
   cpf: string;
   crnm: string;
@@ -32,9 +33,6 @@ export interface Usuario {
   situacaoMigratoria: string;
   observacao: string;
 
-  estado: string;
-  cidade: string;
-  rua: string;
-  numero: number;
-  cep: string;
+  enderecoId: number;
+  Endereco: Endereco;
 }
