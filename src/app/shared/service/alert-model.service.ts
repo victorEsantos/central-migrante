@@ -39,7 +39,7 @@ export class AlertModelService {
     bsModalRef.content.type = type;
     bsModalRef.content.message = message;
 
-    setTimeout(() => bsModalRef.hide(), 4000)
+    setTimeout(() => bsModalRef.hide(), 2000)
   }
 
   showAlertDanger(message: string){

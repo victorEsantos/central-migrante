@@ -1,80 +1,251 @@
 <h1 class="text-center mt-4">Editar Cadastro</h1>
 <form class="needs-validation" novalidate [formGroup]="form">
-  <div class="form-group">
-    <div class="mb-3">
-      <label for="nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="nome" formControlName="nome"
-             [ngClass]="{'is-invalid': submitted && hasError('nome')}">
-      <div *ngIf="hasError('nome')" class="invalid-feedback">
-        <div *ngIf="hasError('nome')?.['required']">
-          Nome não pode ser vazio
+  <mat-horizontal-stepper [labelPosition]="'bottom'">
+
+    <mat-step label="Usuario">
+      <div class="form-group">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" formControlName="nome"
+                 [ngClass]="{'is-invalid': submitted && hasError('nome')}">
+          <div *ngIf="hasError('nome')" class="invalid-feedback">
+            <div *ngIf="hasError('nome')?.['required']">
+              Nome não pode ser vazio
+            </div>
+            <div *ngIf="hasError('nome')?.['minlength']">
+              No mínimo 3 caracteres
+            </div>
+            <div *ngIf="hasError('nome')?.['maxlength']">
+              No Máximo 250 caracteres
+            </div>
+          </div>
         </div>
-        <div *ngIf="hasError('nome')?.['minlength']">
-          No mínimo 3 caracteres
+
+        <div class="mb-3">
+          <label for="user" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="user" formControlName="user"
+                 [ngClass]="{'is-invalid': submitted && hasError('user')}">
+          <div *ngIf="hasError('user')" class="invalid-feedback">
+            <div *ngIf="hasError('user')?.['required']">
+              Usuario não pode ser vazio
+            </div>
+            <div *ngIf="hasError('user')?.['minlength']">
+              No mínimo 3 caracteres
+            </div>
+            <div *ngIf="hasError('user')?.['maxlength']">
+              No Máximo 25 caracteres
+            </div>
+          </div>
         </div>
-        <div *ngIf="hasError('nome')?.['maxlength']">
-          No Máximo 250 caracteres
+
+        <div class="mb-3">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" formControlName="email"
+                 [ngClass]="{'is-invalid': submitted && hasError('email')}">
+          <div *ngIf="hasError('email')" class="invalid-feedback">
+            <div *ngIf="hasError('email')?.['required']">
+              Não pode ser vazio
+            </div>
+            <div *ngIf="hasError('email')">
+              Email invalido
+            </div>
+          </div>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-12 mb-3">
+            <label>Password</label>
+            <input type="password" formControlName="senha" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && hasError('senha') }"/>
+            <div *ngIf="submitted && hasError('senha')" class="invalid-feedback">
+              <div *ngIf="hasError('senha')?.['required']">Password is required</div>
+              <div *ngIf="hasError('senha')?.['minlength']">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-3">
+            <label>Confirm Password</label>
+            <input type="password" formControlName="confirmaSenha" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && hasError('confirmaSenha') }"/>
+            <div *ngIf="submitted && hasError('confirmaSenha')" class="invalid-feedback">
+              <div *ngIf="hasError('confirmaSenha')?.['required']">Confirm Password is required</div>
+              <div *ngIf="hasError('confirmaSenha')?.['mustMatch']">Passwords must match</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 text-center">
+          <button class="btn btn-primary col-12" type="submit" (click)="onSubmit()">Salvar e continuar</button>
+          <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">Cancelar</button>
         </div>
       </div>
-    </div>
+    </mat-step>
 
-    <div class="mb-3">
-      <label for="user" class="form-label">Usuario</label>
-      <input type="text" class="form-control" id="user" formControlName="user"
-             [ngClass]="{'is-invalid': submitted && hasError('user')}">
-      <div *ngIf="hasError('user')" class="invalid-feedback">
-        <div *ngIf="hasError('user')?.['required']">
-          Usuario não pode ser vazio
+
+    <mat-step label="Dados1">
+      <div class="row mb-3 mt-4">
+        <div class="col-lg-6 col-md-12 mb-3">
+          <label>Estado do Brasil onde atravessou a Fronteira</label>
+          <input type="text" formControlName="estadoOndeAtravessouFronteira" class="form-control"/>
         </div>
-        <div *ngIf="hasError('user')?.['minlength']">
-          No mínimo 3 caracteres
+
+        <div class="col-lg-6 col-md-12 mb-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
         </div>
-        <div *ngIf="hasError('user')?.['maxlength']">
-          No Máximo 25 caracteres
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Nacionalidade</label>
+          <input type="text" formControlName="nacionalidade" class="form-control"/>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Cidade de Nascimento</label>
+          <input type="text" formControlName="cidadeNascimento" class="form-control"/>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Telefone</label>
+          <input type="text" formControlName="telefone" class="form-control"/>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>CPF</label>
+          <input type="text" formControlName="cpf" class="form-control"/>
+        </div>
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>CRNM</label>
+          <input type="text" formControlName="crnm" class="form-control"/>
+        </div>
+
+        <div class="col-lg-6 col-md-12 mb-3">
+          <label>Protocolo de Solicitação de Refúgio</label>
+          <input type="text" formControlName="protocoloSolicitacaoRefugio" class="form-control"/>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Passaporte</label>
+          <input type="text" formControlName="passaporte" class="form-control"/>
+        </div>
+
+        <div class="mt-4 text-center">
+          <button class="btn btn-primary col-12" type="submit" (click)="onSubmit()">Salvar e continuar</button>
+          <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">Cancelar</button>
         </div>
       </div>
-    </div>
+    </mat-step>
 
-    <div class="mb-3">
-      <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" formControlName="email"
-             [ngClass]="{'is-invalid': submitted && hasError('email')}">
-      <div *ngIf="hasError('email')" class="invalid-feedback">
-        <div *ngIf="hasError('email')?.['required']">
-          Não pode ser vazio
+    <mat-step label="Dados2">
+      <div class="row mb-3 mt-4">
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Tem conta bancária no Brasil?</label>
+          <select class="form-select" formControlName="hasContaBancariaNoBrasil">
+            <option selected>selecione...</option>
+            <option value=true>Sim</option>
+            <option value=false>Não</option>
+          </select>
         </div>
-        <div *ngIf="hasError('email')">
-          Email invalido
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Idioma que fala e compreende</label>
+          <select class="form-select" formControlName="idioma">
+            <option selected>selecione...</option>
+            <option value="Portugues">Portugues</option>
+            <option value="Ingles">Ingles</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Tem familiares no Brasil?</label>
+          <select class="form-select" formControlName="hasFamiliaresNoBrasil">
+            <option selected>selecione...</option>
+            <option value="1">Sim</option>
+            <option value="0">Não</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Via de Entrada</label>
+          <select class="form-select" formControlName="viaDeEntrada">
+            <option selected>selecione...</option>
+            <option value="TERRESTRE">Terrestre</option>
+            <option value="AEREO">Aéreo</option>
+            <option value="MARITIMO">Marítimo</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Genero</label>
+          <select class="form-select" formControlName="genero">
+            <option selected>selecione...</option>
+            <option value=null>Prefiro Não Dizer</option>
+            <option value="MASCULINO">Masculino</option>
+            <option value="FEMININO">Feminino</option>
+            <option value="TRANS">Transgênero</option>
+            <option value="OUTRO">Outro</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Cor ou Raça</label>
+          <select class="form-select" formControlName="corRaca">
+            <option selected>selecione...</option>
+            <option value="AMARELA">Amarela</option>
+            <option value="BRANCA">Branca</option>
+            <option value="INDIGENA">Indígena</option>
+            <option value="PARDA">Parda</option>
+            <option value="PRETA">Preta</option>
+          </select>
+        </div>
+
+        <div class="mt-4 text-center">
+          <button class="btn btn-primary col-12" type="submit" (click)="onSubmit()">Salvar e continuar</button>
+          <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">Cancelar</button>
         </div>
       </div>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
+    </mat-step>
 
-    <div class="row mb-3">
-      <div class="col-lg-6 col-md-12 mb-3">
-        <label>Password</label>
-        <input type="password" formControlName="senha" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && hasError('senha') }" />
-        <div *ngIf="submitted && hasError('senha')" class="invalid-feedback">
-          <div *ngIf="hasError('senha')?.['required']">Password is required</div>
-          <div *ngIf="hasError('senha')?.['minlength']">Password must be at least 6 characters</div>
+
+    <mat-step label="Endereço">
+      <div class="row mb-3">
+        <div class="col-lg-6 col-md-12 mb-3">
+          <label>Estado</label>
+          <input type="text" formControlName="estado" class="form-control"/>
+        </div>
+
+        <div class="col-lg-6 col-md-12 mb-3">
+          <label>Cidade</label>
+          <input type="text" formControlName="cidade" class="form-control"/>
+        </div>
+
+        <div class="col-lg-6 col-md-12 mb-3">
+          <label>Rua</label>
+          <input type="text" formControlName="rua" class="form-control"/>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>Numero</label>
+          <input type="text" formControlName="numero" class="form-control"/>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-3">
+          <label>CEP</label>
+          <input type="text" formControlName="cep" class="form-control"/>
+        </div>
+
+        <div class="mt-4 text-center">
+          <button class="btn btn-primary col-12" type="submit" (click)="onSubmit()">Salvar</button>
+          <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">Cancelar</button>
         </div>
       </div>
-      <div class="col-lg-6 col-md-12 mb-3">
-        <label>Confirm Password</label>
-        <input type="password" formControlName="confirmaSenha" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && hasError('confirmaSenha') }" />
-        <div *ngIf="submitted && hasError('confirmaSenha')" class="invalid-feedback">
-          <div *ngIf="hasError('confirmaSenha')?.['required']">Confirm Password is required</div>
-          <div *ngIf="hasError('confirmaSenha')?.['mustMatch']">Passwords must match</div>
-        </div>
-      </div>
-    </div>
+    </mat-step>
 
-    <div class="mt-4">
-      <button class="btn btn-primary btn-block col-12" type="submit" (click)="onSubmit()">Salvar</button>
-    </div>
+  </mat-horizontal-stepper>
 
-  </div>
 
 </form>

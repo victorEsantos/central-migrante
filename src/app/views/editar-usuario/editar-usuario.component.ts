@@ -15,9 +15,40 @@ import {MustMatch} from "../usuario-novo/must-match";
 export class EditarUsuarioComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
-    nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
-    email: [null, [Validators.required, Validators.email]]
-  });
+      id: [0],
+      nome: ["null", [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
+      user: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
+      email: [null, [Validators.required, Validators.email]],
+      senha: ['', [Validators.required, Validators.minLength(6)]],
+      confirmaSenha: ['', Validators.required],
+
+      estadoOndeAtravessouFronteira: [null],
+      dataNascimento: [null],
+      nacionalidade: [null],
+      cidadeNascimento: [null],
+      telefone: [null],
+      cpf: [null],
+      crnm: [null],
+      protocoloSolicitacaoRefugio: [null],
+      passaporte: [null],
+
+      hasContaBancariaNoBrasil: [null],
+      idioma: [null],
+      hasFamiliaresNoBrasil: [null],
+      viaDeEntrada: [null],
+      genero: [null],
+      corRaca: [null],
+
+      estado: [null],
+      cidade: [null],
+      rua: [null],
+      numero: [null],
+      cep: [null]
+
+    },
+    {
+      validator: MustMatch('senha', 'confirmaSenha')
+    });
 
   submitted: Boolean = false;
 
@@ -27,35 +58,48 @@ export class EditarUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.form = this.fb.group({
-        nome: ["null", [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
-        user: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
-        email: [null, [Validators.required, Validators.email]],
-        senha: ['', [Validators.required, Validators.minLength(6)]],
-        confirmaSenha: ['', Validators.required],
-      },
-      {
-        validator: MustMatch('senha', 'confirmaSenha')
-      });
-
     this.route.params.subscribe(
-      (params: any)=>{
+      (params: any) => {
         const id = params['id'];
         const usuario$ = this.service.getUsuarioById(id);
-        usuario$.subscribe(usuario =>{
-            this.updateForm(usuario);
+        usuario$.subscribe(usuario => {
+          this.updateForm(usuario);
         })
       }
     )
   }
 
-  updateForm(usuario: Usuario){
+  updateForm(usuario: Usuario) {
     this.form.patchValue({
+      id: usuario.id,
       nome: usuario.nome,
       user: usuario.user,
       email: usuario.email,
       senha: usuario.senha,
-      confirmaSenha: usuario.senha
+      confirmaSenha: usuario.senha,
+
+      estadoOndeAtravessouFronteira: usuario.estadoOndeAtravessouFronteira,
+      dataNascimento: usuario.dataNascimento,
+      nacionalidade: usuario.nacionalidade,
+      cidadeNascimento: usuario.cidadeNascimento,
+      telefone: usuario.telefone,
+      cpf: usuario.cpf,
+      crnm: usuario.crnm,
+      protocoloSolicitacaoRefugio: usuario.protocoloSolicitacaoRefugio,
+      passaporte: usuario.passaporte,
+
+      hasContaBancariaNoBrasil: usuario.hasContaBancariaNoBrasil,
+      idioma: usuario.idioma,
+      hasFamiliaresNoBrasil: usuario.hasFamiliaresNoBrasil,
+      viaDeEntrada: usuario.viaDeEntrada,
+      genero: usuario.genero,
+      corRaca: usuario.corRaca,
+
+      estado: usuario.estado,
+      cidade: usuario.cidade,
+      rua: usuario.rua,
+      numero: usuario.numero,
+      cep: usuario.cep
     })
 
   }
@@ -69,16 +113,20 @@ export class EditarUsuarioComponent implements OnInit {
 
     console.log(this.form.value)
     if (this.form.valid) {
-      this.service.create(this.form.value).subscribe(
+      this.service.update(this.form.value).subscribe(
         success => {
-          this.modal.showAlertSuccess("Criado com sucesso!");
+          this.modal.showAlertSuccess("Salvo com sucesso!");
 
-          this.location.back();
+          // this.location.back();
         },
         error => this.modal.showAlertDanger("Erro ao criar, tente novamente"),
         () => console.log("request completado")
       );
     }
+  }
+
+  onCancel(): void {
+    this.form.reset();
   }
 
   hasError(field: string) {

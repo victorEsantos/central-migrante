@@ -31,4 +31,10 @@ export interface Usuario {
   profissao: string;
   situacaoMigratoria: string;
   observacao: string;
+
+  estado: string;
+  cidade: string;
+  rua: string;
+  numero: number;
+  cep: string;
 }

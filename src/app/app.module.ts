@@ -18,8 +18,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioNovoComponent } from './views/usuario-novo/usuario-novo.component';
 import { ConfirmModalComponent } from './views/confirm-modal/confirm-modal.component';
 import { AlertModalComponent } from './views/alert-modal/alert-modal.component';
-import {ModalModule} from "ngx-bootstrap/modal";
+import { ModalModule } from "ngx-bootstrap/modal";
 import { UsuarioStepperComponent } from './views/usuario-stepper/usuario-stepper.component';
+import { MatStepperModule } from "@angular/material/stepper";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from "@angular/material/core";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -45,7 +50,12 @@ import { UsuarioStepperComponent } from './views/usuario-stepper/usuario-stepper
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatStepperModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -32,4 +32,8 @@ export class UsuarioService {
   public create(usuario: Usuario) {
     return this.httpClient.post(this.apiUrl + "/register", usuario).pipe(take(1));
   }
+
+  public update(usuario: Usuario) {
+    return this.httpClient.put(`${this.apiUrl}/${usuario.id}`, usuario).pipe(take(1));
+  }
 }
