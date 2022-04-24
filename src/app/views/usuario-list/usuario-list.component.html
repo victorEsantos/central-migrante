@@ -1,31 +1,43 @@
-<div class="card">
+<form class="card" [formGroup]="form">
   <div class="card-header">
     Todos migrantes registrados
   </div>
-  <div class="card-body">
+  <div class="card-body col-12">
+    <div class="input-group col-lg-3">
+      <input (focusout)="onPesquisar()" class="form-control border-end-0 border rounded-pill" type="text" placeholder="Type a name"
+             id="example-search-input" formControlName="nome">
+      <span class="input-group-append">
+                <button class="btn btn-outline-dark bg-white border-start-0 border rounded-pill ms-n3"
+                        type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+    </div>
     <table class="table table-hover" *ngIf="usuarios$ | async as usuarios">
       <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">nome</th>
-          <th scope="col">email</th>
-          <th scope="col">acoes</th>
-        </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">nome</th>
+        <th scope="col">email</th>
+        <th scope="col">acoes</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let usuario of usuarios">
-          <th scope="row">{{ usuario.id }}</th>
-          <td>{{ usuario.nome }}</td>
-          <td>{{ usuario.email }}</td>
-          <td>
-            <button class="btn btn-outline-primary btn-sm">ver</button>
-            &nbsp;
-            <button class="btn btn-outline-success btn-sm" [routerLink]="['/editarUsuario']" (click)="onEdit(usuario.id)">editar</button>
-          </td>
-        </tr>
+      <tr *ngFor="let usuario of usuarios">
+        <th scope="row">{{ usuario.id }}</th>
+        <td>{{ usuario.nome }}</td>
+        <td>{{ usuario.email }}</td>
+        <td>
+          <button class="btn btn-outline-primary btn-sm">ver</button>
+          &nbsp;
+          <button class="btn btn-outline-success btn-sm" [routerLink]="['/editarUsuario']" (click)="onEdit(usuario.id)">
+            editar
+          </button>
+        </td>
+      </tr>
       </tbody>
     </table>
 
     <ng-template #loading><span>carregando...</span></ng-template>
   </div>
-</div>
+</form>
