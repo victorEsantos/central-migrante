@@ -50,7 +50,7 @@ export class EditarUsuarioComponent implements OnInit {
       validator: MustMatch('senha', 'confirmaSenha')
     });
 
-  submitted: Boolean = false;
+  submitted: boolean = false;
 
   constructor(private fb: FormBuilder, private service: UsuarioService, private modal: AlertModelService,
               private location: Location, private route: ActivatedRoute) {
@@ -114,12 +114,12 @@ export class EditarUsuarioComponent implements OnInit {
     console.log(this.form.value)
     if (this.form.valid) {
       this.service.update(this.form.value).subscribe(
-        success => {
+        () => {
           this.modal.showAlertSuccess("Salvo com sucesso!");
 
           // this.location.back();
         },
-        error => this.modal.showAlertDanger("Erro ao criar, tente novamente"),
+        () => this.modal.showAlertDanger("Erro ao criar, tente novamente"),
         () => console.log("request completado")
       );
     }
