@@ -22,7 +22,7 @@ export class EnderecoService {
   ) {
   }
 
-  public getUsuarioById(id: number): Observable<Endereco> {
+  public getById(id: number): Observable<Endereco> {
     return this.httpClient.get<Endereco>(`${this.apiUrl}/${id}`).pipe(take(1))
   }
 
