@@ -1,43 +1,102 @@
-<form class="card" [formGroup]="form">
-  <div class="card-header">
-    Todos migrantes registrados
-  </div>
-  <div class="card-body col-12">
-    <div class="input-group col-lg-3">
-      <input (focusout)="onPesquisar()" class="form-control border-end-0 border rounded-pill" type="text" placeholder="Type a name"
-             id="example-search-input" formControlName="nome">
-      <span class="input-group-append">
-                <button class="btn btn-outline-dark bg-white border-start-0 border rounded-pill ms-n3"
-                        type="button">
-                    <i class="fa fa-search"></i>
-                </button>
-            </span>
-    </div>
-    <table class="table table-hover" *ngIf="usuarios$ | async as usuarios">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">nome</th>
-        <th scope="col">email</th>
-        <th scope="col">acoes</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let usuario of usuarios">
-        <th scope="row">{{ usuario.id }}</th>
-        <td>{{ usuario.nome }}</td>
-        <td>{{ usuario.email }}</td>
-        <td>
-          <button class="btn btn-outline-primary btn-sm">ver</button>
-          &nbsp;
-          <button class="btn btn-outline-success btn-sm" [routerLink]="['/editarUsuario']" (click)="onEdit(usuario.id)">
-            editar
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+<!--<form class="card" [formGroup]="form">-->
+<!--  <div class="card-header">-->
+<!--    Todos migrantes registrados-->
+<!--  </div>-->
+<!--  <div class="card-body col-12">-->
+<!--    <div class="input-group col-lg-3">-->
+<!--      <input (focusout)="onPesquisar()" class="form-control border-end-0 border rounded-pill" type="text" placeholder="Type a name"-->
+<!--             id="example-search-input" formControlName="nome">-->
+<!--      <span class="input-group-append">-->
+<!--                <button class="btn btn-outline-dark bg-white border-start-0 border rounded-pill ms-n3"-->
+<!--                        type="button">-->
+<!--                    <i class="fa fa-search"></i>-->
+<!--                </button>-->
+<!--            </span>-->
+<!--    </div>-->
+<!--    <table class="table table-hover" *ngIf="usuarios">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th scope="col">#</th>-->
+<!--        <th scope="col">nome</th>-->
+<!--        <th scope="col">email</th>-->
+<!--        <th scope="col">acoes</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let usuario of usuarios">-->
+<!--        <th scope="row">{{ usuario.id }}</th>-->
+<!--        <td>{{ usuario.nome }}</td>-->
+<!--        <td>{{ usuario.email }}</td>-->
+<!--        <td>-->
+<!--          <button class="btn btn-outline-primary btn-sm">ver</button>-->
+<!--          &nbsp;-->
+<!--          <button class="btn btn-outline-success btn-sm" [routerLink]="['/editarUsuario']" (click)="onEdit(usuario.id)">-->
+<!--            editar-->
+<!--          </button>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
 
-    <ng-template #loading><span>carregando...</span></ng-template>
-  </div>
-</form>
+<!--    <ng-template #loading><span>carregando...</span></ng-template>-->
+<!--  </div>-->
+<!--</form>-->
+
+
+<h1>Table</h1>
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput name="filter" placeholder="Ex. Jose" type="text" value="" (keyup)="applyFilter($event)">
+</mat-form-field>
+
+<div>
+  <table mat-table [dataSource]="this.dataSource" class="col-lg-12" matSort>
+    <ng-container matColumnDef="#">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="id">ID</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="nome">Nome</th>
+      <td mat-cell *matCellDef="let row">{{row.nome}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="email">Email</th>
+      <td mat-cell *matCellDef="let row">{{row.email}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>account_box</mat-icon>
+            <span>Visualizar</span>
+          </button>
+          <button mat-menu-item (click)="onEdit(row.id)">
+            <mat-icon>border_color</mat-icon>
+            <span>Editar</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>delete_forever</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+  <mat-paginator [length]="usuarios.length"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[1, 5, 10, 25, 100, 500]"
+                 aria-label="Select page">
+  </mat-paginator>
+
+</div>

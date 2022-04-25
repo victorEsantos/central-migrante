@@ -79,7 +79,6 @@ export class EditarUsuarioComponent implements OnInit {
         const usuario$ = this.usuarioService.getUsuarioById(id);
         usuario$.subscribe(usuario => {
           if (usuario.Endereco == undefined) {
-            console.log("UNDEFINEEEEEEEEEEEEEEEEEEEEEEEEEEED")
             this.isNovoEndereco = true;
           }
           this.updateForm(usuario);

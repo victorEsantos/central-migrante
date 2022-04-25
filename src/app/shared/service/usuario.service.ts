@@ -21,16 +21,16 @@ export class UsuarioService {
     private httpClient: HttpClient
   ) { }
 
-  public getAllUsuarios(nome?: string): Observable<Usuario[]> {
+  public getAllUsuarios(nome?: string): Observable<any> {
     let url = this.apiUrl;
     if (nome) {
       url = url + "?nome=" + nome;
     }
-    return this.httpClient.get<Usuario[]>(url)
+    return this.httpClient.get<any>(url).pipe(take(1));
   }
 
   public getUsuarioById(id:number): Observable<Usuario> {
-    return this.httpClient.get<Usuario>(`${this.apiUrl}/${id}`).pipe(take(1))
+    return this.httpClient.get<Usuario>(`${this.apiUrl}/${id}`).pipe(take(1));
   }
 
   public create(usuario: Usuario) {

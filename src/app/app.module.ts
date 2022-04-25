@@ -25,6 +25,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
+import {MatSortModule} from "@angular/material/sort";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -46,6 +49,7 @@ import {MatInputModule} from "@angular/material/input";
     MatToolbarModule,
     MatIconModule,
     MatTableModule,
+    MatSortModule,
     MatPaginatorModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -55,7 +59,9 @@ import {MatInputModule} from "@angular/material/input";
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
