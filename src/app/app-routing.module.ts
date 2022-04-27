@@ -9,8 +9,13 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
-  },{
+  },
+  {
     path: 'editarUsuario/:id',
+    component: EditarUsuarioComponent
+  },
+  {
+    path: 'visualizarUsuario/:id',
     component: EditarUsuarioComponent
   },
   {

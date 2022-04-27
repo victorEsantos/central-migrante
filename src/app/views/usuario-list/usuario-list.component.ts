@@ -44,6 +44,10 @@ export class UsuarioListComponent implements OnInit, AfterViewInit {
     this.route.navigate(['/editarUsuario', id ])
   }
 
+  onView(id: number) {
+    this.route.navigate(['/visualizarUsuario', id ])
+  }
+
   onPesquisar() {
     this.usuariosPagable$ = this.service.getAllUsuarios(this.form.value?.nome);
   }

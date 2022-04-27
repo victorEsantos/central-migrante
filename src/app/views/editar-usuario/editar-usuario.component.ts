@@ -1,13 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from "@angular/router";
-import {UsuarioService} from "../../shared/service/usuario.service";
-import {Usuario} from "../../shared/model/usuario.model";
-import {AlertModelService} from "../../shared/service/alert-model.service";
-import {Location} from "@angular/common";
-import {MustMatch} from "../usuario-novo/must-match";
-import {EnderecoService} from "../../shared/service/endereco.service";
-import {Endereco} from "../../shared/model/endereco.model";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from "@angular/router";
+import { UsuarioService } from "../../shared/service/usuario.service";
+import { Usuario } from "../../shared/model/usuario.model";
+import { AlertModelService } from "../../shared/service/alert-model.service";
+import { Location } from "@angular/common";
+import { MustMatch } from "../usuario-novo/must-match";
+import { EnderecoService } from "../../shared/service/endereco.service";
+import { Endereco } from "../../shared/model/endereco.model";
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -16,45 +17,47 @@ import {Endereco} from "../../shared/model/endereco.model";
 })
 export class EditarUsuarioComponent implements OnInit {
 
+  isView: boolean = false;
+
   form: FormGroup = this.fb.group({
-      id: [0],
-      nome: ["null", [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
-      user: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
-      email: [null, [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
-      confirmaSenha: ['', Validators.required],
+    id: [0],
+    nome: ["null", [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
+    user: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
+    email: [null, [Validators.required, Validators.email]],
+    senha: ['', [Validators.required, Validators.minLength(6)]],
+    confirmaSenha: ['', Validators.required],
 
-      estadoOndeAtravessouFronteira: [null],
-      dataNascimento: [null],
-      nacionalidade: [null],
-      cidadeNascimento: [null],
-      telefone: [null],
-      cpf: [null],
-      crnm: [null],
-      protocoloSolicitacaoRefugio: [null],
-      passaporte: [null],
+    estadoOndeAtravessouFronteira: [null],
+    dataNascimento: [null],
+    nacionalidade: [null],
+    cidadeNascimento: [null],
+    telefone: [null],
+    cpf: [null],
+    crnm: [null],
+    protocoloSolicitacaoRefugio: [null],
+    passaporte: [null],
 
-      hasContaBancariaNoBrasil: [null],
-      idioma: [null],
-      hasFamiliaresNoBrasil: [null],
-      viaDeEntrada: [null],
-      genero: [null],
-      corRaca: [null],
+    hasContaBancariaNoBrasil: [null],
+    idioma: [null],
+    hasFamiliaresNoBrasil: [null],
+    viaDeEntrada: [null],
+    genero: [null],
+    corRaca: [null],
 
-      hasEscolaridade: ["true"],
-      hasEnsinoFundamental: [null],
-      hasEnsinoMedio: [null],
-      hasEnsinoSuperior: [null],
-      hasPosGraduacao: [null],
+    hasEscolaridade: ["true"],
+    hasEnsinoFundamental: [null],
+    hasEnsinoMedio: [null],
+    hasEnsinoSuperior: [null],
+    hasPosGraduacao: [null],
 
-      enderecoId: [null],
-      estado: [null],
-      cidade: [null],
-      rua: [null],
-      numero: [null],
-      cep: [null]
+    enderecoId: [null],
+    estado: [null],
+    cidade: [null],
+    rua: [null],
+    numero: [null],
+    cep: [null]
 
-    },
+  },
     {
       validator: MustMatch('senha', 'confirmaSenha')
     });
@@ -63,14 +66,20 @@ export class EditarUsuarioComponent implements OnInit {
   isNovoEndereco: boolean = false;
 
   constructor(private fb: FormBuilder,
-              private usuarioService: UsuarioService,
-              private modelService: AlertModelService,
-              private enderecoService: EnderecoService,
-              private location: Location,
-              private route: ActivatedRoute) {
+    private usuarioService: UsuarioService,
+    private modelService: AlertModelService,
+    private enderecoService: EnderecoService,
+    private location: Location,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+
+    let location = this.location.path().split("/")[1];
+    if(location == 'visualizarUsuario'){
+      this.isView = true;
+      this.form.disable();
+    }
 
 
     this.route.params.subscribe(
@@ -116,7 +125,7 @@ export class EditarUsuarioComponent implements OnInit {
 
 
       hasEscolaridade: this.safeBooleanToString((usuario.hasEnsinoFundamental == null && usuario.hasEnsinoMedio == null &&
-                                                     usuario.hasEnsinoSuperior == null && usuario.hasPosGraduacao == null)),
+        usuario.hasEnsinoSuperior == null && usuario.hasPosGraduacao == null)),
 
       hasEnsinoFundamental: this.safeBooleanToString(usuario.hasEnsinoFundamental),
       hasEnsinoMedio: this.safeBooleanToString(usuario.hasEnsinoMedio),
@@ -134,8 +143,8 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   private safeBooleanToString(boolean: boolean): string | null {
-    if(boolean == undefined){
-      return  null;
+    if (boolean == undefined) {
+      return null;
     }
     return boolean == true ? 'true' : 'false';
   }
