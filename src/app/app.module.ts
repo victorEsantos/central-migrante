@@ -28,6 +28,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
+import { HeaderComponent } from './views/header/header.component';
+import { FooterComponent } from './views/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {MatButtonModule} from "@angular/material/button";
     UsuarioNovoComponent,
     ConfirmModalComponent,
     AlertModalComponent,
-    UsuarioStepperComponent
+    UsuarioStepperComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

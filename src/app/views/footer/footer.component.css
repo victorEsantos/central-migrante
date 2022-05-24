@@ -1,0 +1,32 @@
+.footer{
+    align-items: center;
+    bottom: 0;
+}
+.navbar-custom{
+    height: 50px;
+    background-image: url(../../../assets/bg-footer.gif);
+    background-size: contain;
+    background-repeat: repeat-x;
+    width: 100%;
+
+}
+
+#logoFooter{
+    justify-content: end;
+    margin-left: 20%;
+}
+
+#titleFooterText{
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#footerId{
+    background-color: #F2F2F2;
+}
+
+#services{
+    color: #005293;
+    text-decoration: none;
+}

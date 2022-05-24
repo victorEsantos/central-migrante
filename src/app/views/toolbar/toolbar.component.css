@@ -3,7 +3,10 @@
   }
 
   .navbar-custom{
-    background-color: rgb(27, 54, 95);
+    background-image: url(../../../assets/bg-header.png);
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-color: #004688c9;
   }
 
   a{
