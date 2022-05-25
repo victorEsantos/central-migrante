@@ -47,7 +47,7 @@
           Email invalido
         </div>
       </div>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu e-mail com mais ninguém.</small>
     </div>
 
     <div class="row mb-3">
@@ -56,17 +56,17 @@
         <input type="password" formControlName="senha" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && hasError('senha') }" />
         <div *ngIf="submitted && hasError('senha')" class="invalid-feedback">
-          <div *ngIf="hasError('senha')?.['required']">Password is required</div>
-          <div *ngIf="hasError('senha')?.['minlength']">Password must be at least 6 characters</div>
+          <div *ngIf="hasError('senha')?.['required']">Senha requerida</div>
+          <div *ngIf="hasError('senha')?.['minlength']">Senha deve conter ao menos 6 caracteres</div>
         </div>
       </div>
       <div class="col-lg-6 col-md-12 mb-3">
-        <label>Confirm Password</label>
+        <label>Confirmar senha</label>
         <input type="password" formControlName="confirmaSenha" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && hasError('confirmaSenha') }" />
         <div *ngIf="submitted && hasError('confirmaSenha')" class="invalid-feedback">
-          <div *ngIf="hasError('confirmaSenha')?.['required']">Confirm Password is required</div>
-          <div *ngIf="hasError('confirmaSenha')?.['mustMatch']">Passwords must match</div>
+          <div *ngIf="hasError('confirmaSenha')?.['required']">Confirmação da senha é requerida</div>
+          <div *ngIf="hasError('confirmaSenha')?.['mustMatch']">As senhas devem ser iguais</div>
         </div>
       </div>
     </div>
