@@ -1,48 +1,60 @@
-
-
-  <div class="box-login row col-12">
-
-    <div class="col-lg-6 col-md-12">
-      <div class="text-center mt-4">
-        <h1 class="mt-1 mb-3 pb-1 text-white">Bem vindo</h1>
-      </div>
-      <!-- Email input -->
-      <div class="form-outline text-white">
-        <span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          It has survived not only five centuries, but also the leap into electronic typesetting,
-        </span>
-      </div>
+<div class="box-login row col-12">
+  <div class="col-lg-6 col-md-12">
+    <div class="text-center mt-4">
+      <h1 class="mt-1 mb-3 pb-1 text-white">Bem vindo</h1>
     </div>
-
-    <form class="form-login col mt-4 mb-4 mx-4">
-      <div class="text-center">
-        <h1 id="loginText" class="mt-1 mb-5 pb-1">LOGIN</h1>
-      </div>
-      <!-- Email input -->
-      <div class="form-outline mb-4">
-        <input type="email" id="form2Example1" class="form-control" placeholder="Insira seu email"/>
-        <label class="form-label" for="form2Example1"></label>
-      </div>
-
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="form2Example2" class="form-control" placeholder="Insira sua senha"/>
-        <label class="form-label" for="form2Example2"></label>
-      </div>
-
-      <!-- Submit button -->
-      <div class="text-center">
-        <button id="entryButton" type="button" class="btn btn-primary btn-lg">Entrar</button>
-      </div>
-      <!-- Register buttons -->
-      <div class="text-center">
-        <p>Não é cadastrado ainda?</p>
-        <p><a id="linkButton" class="btn btn-link" [routerLink]="['novoUsuario']">Registre-se</a></p>
-      </div>
-    </form>
+    <!-- Email input -->
+    <div class="form-outline text-white">
+      <span>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting,
+      </span>
+    </div>
   </div>
 
+  <form class="form-login col mt-4 mb-4 mx-4" [formGroup]="form">
+    <div class="text-center">
+      <h1 id="loginText" class="mt-1 mb-5 pb-1">LOGIN</h1>
+    </div>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="username">username</label><br>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Insira seu username"
+        formControlName="username"
+      />
+    </div>
 
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="password">Password</label><br>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Insira sua senha"
+        formControlName="password"
+      />
+    </div>
+
+    <!-- Submit button -->
+    <div class="text-center">
+      <button id="entryButton" type="submit" (click)="onSubmit()" class="btn btn-primary btn-lg">
+        Entrar
+      </button>
+    </div>
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>Não é cadastrado ainda?</p>
+      <p>
+        <a id="linkButton" class="btn btn-link" [routerLink]="['novoUsuario']"
+          >Registre-se</a
+        >
+      </p>
+    </div>
+  </form>
+</div>
