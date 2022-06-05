@@ -34,8 +34,11 @@ export class TokenStorageService {
 
     if (user) {
       let roles = user.roles;
-      for (let role in roles) {
-        if (role == 'ROLE_ADMIN') {
+
+      for (let i = 0; i < roles.length; i++) {
+
+        console.log(roles[0])
+        if (roles[i] == "ROLE_ADMIN") {
           isAdmin = true;
           break;
         }

@@ -16,6 +16,10 @@ export class ToolbarComponent implements OnInit{
     if(this.hasUser){
       this.id = this.token.getUser().id
     }
+
+    this.isAdmin = this.token.userIsAdmin();
+
+    console.log(this.isAdmin)
   }
 
   hasUser: boolean = this.token.getUser() !== null;
