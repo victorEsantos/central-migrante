@@ -1,26 +1,28 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Usuario } from 'src/app/shared/model/usuario.model';
-import { UsuarioService } from 'src/app/shared/service/usuario.service';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/shared/service/token-storage.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-
-  usuarios: Usuario[] = [];
-
-  usuarios$?: Observable<Usuario[]>;
-
-  constructor(private service: UsuarioService) { }
+export class HomeComponent implements OnInit{
+  
+  constructor(private route: Router, private token: TokenStorageService) {}
 
   ngOnInit(): void {
-    // this.service.getAllUsuarios().subscribe(data => this.usuarios = data)
+    if(this.hasUser){
+      this.id = this.token.getUser().id
+    }
+  }
 
-    this.usuarios$ = this.service.getAllUsuarios();
+  hasUser: boolean = this.token.getUser() !== null;
+  id: number = 0;
+  
+
+  onEdit(id: number) {
+    this.route.navigate(['/editarUsuario', id ])
   }
 
 }

@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToolbarComponent } from './views/toolbar/toolbar.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UsuarioListComponent } from './views/usuario-list/usuario-list.component';
 import { LoginComponent } from './views/login/login.component';
 import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.component';
@@ -30,6 +30,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
 import { HeaderComponent } from './views/header/header.component';
 import { FooterComponent } from './views/footer/footer.component';
+import { AuthInterceptor } from './shared/_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,9 @@ import { FooterComponent } from './views/footer/footer.component';
     MatButtonModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

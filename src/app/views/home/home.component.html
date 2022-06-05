@@ -1,1 +1,6 @@
-<app-login></app-login>
+<div *ngIf="hasUser; else elseBlock">
+    <button class="btn btn-primary col-12" type="submit" (click)="onEdit(id)">Continuar Cadastro Aqui</button>
+</div>
+<ng-template #elseBlock>
+    <app-login></app-login>
+</ng-template>
