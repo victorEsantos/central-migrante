@@ -24,8 +24,8 @@ export class EditarUsuarioComponent implements OnInit {
     nome: ["null", [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
     user: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     email: [null, [Validators.required, Validators.email]],
-    senha: ['', [Validators.required, Validators.minLength(6)]],
-    confirmaSenha: ['', Validators.required],
+    senha: ['', [Validators.minLength(6)]],
+    confirmaSenha: [''],
 
     estadoOndeAtravessouFronteira: [null],
     dataNascimento: [null],
