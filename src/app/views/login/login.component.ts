@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertModelService } from 'src/app/shared/service/alert-model.service';
 import { AuthService } from '../../shared/service/auth.service';
 import { TokenStorageService } from '../../shared/service/token-storage.service';
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
     private route: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    private modal: AlertModelService
   ) {}
 
   form: FormGroup = this.fb.group({
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit {
       (err) => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        this.modal.showAlertDanger(err.error.message)
       }
     );
   }

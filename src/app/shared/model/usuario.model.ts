@@ -1,6 +1,7 @@
 import {Endereco} from "./endereco.model";
 
 export interface Usuario {
+  [x: string]: any;
   id: number;
   nome: string;
   email: string;
@@ -17,6 +18,7 @@ export interface Usuario {
   telefone: string;
   cpf: string;
   crnm: string;
+  crnmvencimento: Date,
   protocoloSolicitacaoRefugio: string;
   passaporte: string;
   ctps: string;
