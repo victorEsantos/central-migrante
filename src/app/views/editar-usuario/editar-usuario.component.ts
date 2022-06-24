@@ -98,7 +98,6 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   updateForm(usuario: Usuario) {
-    console.log(usuario);
     this.form.patchValue({
       id: usuario.id,
       nome: usuario.nome,

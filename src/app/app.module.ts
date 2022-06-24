@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToolbarComponent } from './views/toolbar/toolbar.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UsuarioListComponent } from './views/usuario-list/usuario-list.component';
 import { LoginComponent } from './views/login/login.component';
 import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.component';
@@ -31,6 +31,19 @@ import {MatButtonModule} from "@angular/material/button";
 import { HeaderComponent } from './views/header/header.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { AuthInterceptor } from './shared/_helpers/auth.interceptor';
+import { InternationalizationModule } from './internationalization/internationalization.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+/**
+* The http loader factory : Loads the files from define path.
+* @param {HttpClient} http
+* @returns {TranslateHttpLoader}
+* @constructor
+*/
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/locales/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -66,7 +79,15 @@ import { AuthInterceptor } from './shared/_helpers/auth.interceptor';
     MatInputModule,
     MatNativeDateModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    InternationalizationModule.forRoot({ locale_id: 'en-US' }), // iniating with default language: en-US
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
