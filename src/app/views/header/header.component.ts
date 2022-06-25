@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   onChange(language: any): void{
     if(!language){
-      language = 'pt-BR'
+      language = 'pt'
     }else{
       language = language.value
     }

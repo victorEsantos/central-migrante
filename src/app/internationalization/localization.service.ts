@@ -7,7 +7,9 @@ import { LocalizationServiceConfig } from './localization-config.service';
  */
 @Injectable()
 export class LocalizationService {
-  private _localeId: string = 'en-US'; // default
+  private _localeId: string = 'en'; // default
+
+  private languages: string[] = ['pt', 'en', 'es'];
 
   /**
    * @constructor
@@ -34,9 +36,7 @@ export class LocalizationService {
    */
   public initService(): Promise<void> {
 
-    // localStorage.setItem('language', 'en-US')
-    // language code same as file name.
-    this._localeId = localStorage.getItem('language') || 'en-US';
+    this._localeId = localStorage.getItem('language') || 'en';
     return this.useLanguage(this._localeId);
   }
 
@@ -45,6 +45,10 @@ export class LocalizationService {
    * @returns {Promise<void>}
    */
   public useLanguage(lang: string): Promise<void> {
+    if(!this.languages.includes(lang)){
+      lang = 'pt'
+      localStorage.setItem('language', lang)
+    }
     this.translateService.setDefaultLang(lang);
     return this.translateService
       .use(lang)
