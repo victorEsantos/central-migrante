@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalizationService } from 'src/app/internationalization/localization.service';
 import { TokenStorageService } from 'src/app/shared/service/token-storage.service';
 
 @Component({
@@ -8,8 +9,16 @@ import { TokenStorageService } from 'src/app/shared/service/token-storage.servic
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  
-  constructor(private route: Router, private token: TokenStorageService) {}
+
+  constructor(private route: Router,
+    private token: TokenStorageService,
+    private localizationService: LocalizationService) {}
+
+
+
+  get name(): string {
+    return this.localizationService.translate('banner.world');
+  }
 
   ngOnInit(): void {
     if(this.hasUser){
@@ -19,7 +28,7 @@ export class HomeComponent implements OnInit{
 
   hasUser: boolean = this.token.getUser() !== null;
   id: number = 0;
-  
+
 
   onEdit(id: number) {
     this.route.navigate(['/editarUsuario', id ])
