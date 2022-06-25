@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsuarioService } from 'src/app/shared/service/usuario.service';
-import { MustMatch } from './must-match';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UsuarioService} from 'src/app/shared/service/usuario.service';
+import {MustMatch} from './must-match';
 import {AlertModelService} from "../../shared/service/alert-model.service";
 import {Location} from "@angular/common";
 
@@ -17,7 +17,7 @@ export class UsuarioNovoComponent implements OnInit {
     email: [null, [Validators.required, Validators.email]]
   });
 
-  submitted: Boolean = false;
+  submitted: boolean = false;
 
   constructor(private fb: FormBuilder, private service: UsuarioService, private modal: AlertModelService,
               private location: Location) { }

@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from "@angular/router";
-import { UsuarioService } from "../../shared/service/usuario.service";
-import { Usuario } from "../../shared/model/usuario.model";
-import { AlertModelService } from "../../shared/service/alert-model.service";
-import { Location } from "@angular/common";
-import { MustMatch } from "../usuario-novo/must-match";
-import { EnderecoService } from "../../shared/service/endereco.service";
-import { Endereco } from "../../shared/model/endereco.model";
-import { of } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute} from "@angular/router";
+import {UsuarioService} from "../../shared/service/usuario.service";
+import {Usuario} from "../../shared/model/usuario.model";
+import {AlertModelService} from "../../shared/service/alert-model.service";
+import {Location} from "@angular/common";
+import {MustMatch} from "../usuario-novo/must-match";
+import {EnderecoService} from "../../shared/service/endereco.service";
+import {Endereco} from "../../shared/model/endereco.model";
 
 @Component({
   selector: 'app-editar-usuario',
@@ -147,7 +146,7 @@ export class EditarUsuarioComponent implements OnInit {
     if (boolean == undefined) {
       return null;
     }
-    return boolean == true ? 'true' : 'false';
+    return boolean ? 'true' : 'false';
   }
 
   onSubmit(): void {
