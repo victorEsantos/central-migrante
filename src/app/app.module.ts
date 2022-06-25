@@ -80,7 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatNativeDateModule,
     MatButtonModule,
     MatMenuModule,
-    InternationalizationModule.forRoot({ locale_id: 'en-US' }), // iniating with default language: en-US
+    InternationalizationModule.forRoot({ locale_id: 'en' }), // iniating with default language: en-US
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

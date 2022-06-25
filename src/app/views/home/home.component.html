@@ -1,6 +1,6 @@
-<h1>{{ 'username' | translate }} {{ name }}!</h1>
+
 <div *ngIf="hasUser; else elseBlock">
-    <button class="btn btn-primary col-12" type="submit" (click)="onEdit(id)">Continuar Cadastro Aqui</button>
+    <button class="btn btn-primary col-12" type="submit" (click)="onEdit(id)">{{ 'continuehere' | translate }}</button>
 </div>
 <ng-template #elseBlock>
     <app-login></app-login>

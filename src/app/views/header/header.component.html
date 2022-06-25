@@ -5,23 +5,13 @@
     <span id="textCentral" class="navbar-text">
         Central Migrante
     </span>
-    <div class="language">
-        <div class="language-selected">
-            PT-BR
-        </div>
-        <ul>
-            <li><a href="#" class="br">Português</a></li>
-            <li><a href="#" class="en">English</a></li>
-            <li><a href="#" class="es">Español</a></li>
-        </ul>
-    </div>
 
     <form [formGroup]="form">
-      <select formControlName="countryControl" (change)="onChange($event.target)">
+      <select class="form-select" formControlName="countryControl" (change)="onChange($event.target)">
         <option value=null selected>select...</option>
-        <option value="pt-BR" >Português</option>
-        <option value="en-US">English</option>
-        <option value="es-ES">Español</option>
+        <option value="pt" >Português</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
       </select>
     </form>
   </nav>

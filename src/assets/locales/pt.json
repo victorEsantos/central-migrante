@@ -1,0 +1,57 @@
+{
+  "login": "Login",
+  "username": "Nome do Usuário",
+  "password": "Senha",
+  "log-in": "Entrar",
+  "welcome": "Bem-Vindo",
+  "desc-wellcome": "pt-br Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting",
+  "continuehere": "Continuar Cadastro Aqui",
+
+  "user": {
+    "name": "Nome",
+    "user": "Usuário (será informado para entrar no sistema)",
+    "email": "Email",
+    "pass": "Senha",
+    "confirmpass": "Confirmar senha"
+  },
+
+  "edituser": {
+    "statecrossborder": "Estado do Brasil onde atravessou a Fronteira",
+    "crnmexpiration": "Vencimento",
+    "nacionality": "Nacionalidade",
+    "citybirth": "Cidade de nascimento",
+    "phone": "Telefone",
+    "protocol": "Protocolo de Solicitação de Refúgio",
+    "passport": "Passaporte",
+    "savecontinue": "Salvar e Continuar",
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "bankacc": "Tem conta bancária no Brasil?",
+    "lang": "Idioma que fala e compreende",
+    "hasfamilybrasil": "Tem familiares no Brasil?",
+    "entryway": "Via de entrada",
+    "gender": "Gênero",
+    "color": "Cor ou raça",
+    "schooling": "Escolaridade",
+    "noschooling": "Não possuo escolaridade",
+    "complete": "Completo",
+    "incomplete": "Incompleto",
+    "elementary": "Ensino Fundamental",
+    "highschool": "Ensino Médio",
+    "college": "Ensino Superior",
+    "graduate": "Pós-Graduação",
+    "state": "Estado",
+    "city": "Cidade",
+    "street": "Rua",
+    "number": "Número",
+    "psotalcode": "Cep"
+  },
+
+  "toolbar": {
+    "edituser": "Editar Meu Usuário",
+    "listusers": "Listar Usuários",
+    "logout": "Sair"
+
+  }
+
+}

@@ -7,7 +7,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-lg-6 col-md-12 mb-3">
-              <label for="nome" class="form-label">Nome</label>
+              <label for="nome" class="form-label">{{ 'user.name' | translate }}</label>
               <input type="text" class="form-control" id="nome" formControlName="nome"
                     [ngClass]="{'is-invalid': submitted && hasError('nome')}">
               <mat-error *ngIf="hasError('nome')" class="invalid-feedback">
@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-lg-6 col-md-12 mb-3">
-              <label for="user" class="form-label">Usuario</label>
+              <label for="user" class="form-label">{{ 'user.user' | translate }}</label>
               <input type="text" class="form-control" id="user" formControlName="user"
                     [ngClass]="{'is-invalid': submitted && hasError('user')}">
               <div *ngIf="hasError('user')" class="invalid-feedback">
@@ -42,7 +42,7 @@
           </div>
 
           <div class="mb-3">
-            <label for="email">Email address</label>
+            <label for="email">{{ 'user.email' | translate }}</label>
             <input type="email" class="form-control" id="email" formControlName="email"
                   [ngClass]="{'is-invalid': submitted && hasError('email')}">
             <mat-error *ngIf="hasError('email')" class="invalid-feedback">
@@ -58,7 +58,7 @@
 
           <div class="row mb-3">
             <div class="col-lg-6 col-md-12 mb-3">
-              <label>Password</label>
+              <label>{{ 'user.pass' | translate }}</label>
               <input type="password" formControlName="senha" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && hasError('senha') }"/>
               <div *ngIf="submitted && hasError('senha')" class="invalid-feedback">
@@ -69,7 +69,7 @@
             </div>
 
             <div class="col-lg-6 col-md-12 mb-3">
-              <label>Confirm Password</label>
+              <label>{{ 'user.confirmpass' | translate }}</label>
               <input type="password" formControlName="confirmaSenha" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && hasError('confirmaSenha') }"/>
               <mat-error *ngIf="submitted && hasError('confirmaSenha')" class="invalid-feedback">
@@ -81,15 +81,18 @@
           </div>
 
           <div class="mt-4 text-center" *ngIf="!isView; else elseBlock">
-            <button matStepperNext class="btn btn-primary col-12" type="submit" (click)="onSubmit()">Salvar e continuar
+            <button matStepperNext class="btn btn-primary col-12" type="submit" (click)="onSubmit()">
+              {{ 'edituser.savecontinue' | translate }}
             </button>
-            <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">Cancelar</button>
+            <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">
+              {{ 'edituser.cancel' | translate }}
+            </button>
           </div>
           <ng-template #elseBlock>
             <button matStepperNext
             class="btn btn-primary col-12"
             type="submit">
-              Continuar
+              {{ 'edituser.continue' | translate }}
             </button>
           </ng-template>
         </div>
@@ -101,7 +104,7 @@
       <form class="needs-validation" novalidate [formGroup]="form">
         <div class="row mb-3 mt-4">
           <div class="col-lg-6 col-md-12 mb-3">
-            <label>Estado do Brasil onde atravessou a Fronteira</label>
+            <label>{{ 'edituser.statecrossborder' | translate }}</label>
             <input type="text" formControlName="estadoOndeAtravessouFronteira" class="form-control"/>
           </div>
 
@@ -112,7 +115,7 @@
 
           <div class="col-lg-3 col-md-12 mb-3">
             <mat-form-field appearance="fill">
-              <mat-label>CRNM Vencimento</mat-label>
+              <mat-label>CRNM {{ 'edituser.crnmexpiration' | translate }}</mat-label>
               <input matInput [matDatepicker]="pickerCRNM" formControlName="crnmvencimento">
               <mat-hint>DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matSuffix [for]="pickerCRNM"></mat-datepicker-toggle>
@@ -121,17 +124,17 @@
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Nacionalidade</label>
+            <label>{{ 'edituser.nacionality' | translate }}</label>
             <input type="text" formControlName="nacionalidade" class="form-control"/>
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Cidade de Nascimento</label>
+            <label>{{ 'edituser.citybirth' | translate }}</label>
             <input type="text" formControlName="cidadeNascimento" class="form-control"/>
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Telefone</label>
+            <label>{{ 'edituser.phone' | translate }}</label>
             <input type="text" formControlName="telefone" class="form-control"/>
           </div>
 
@@ -150,25 +153,28 @@
           </div>
 
           <div class="col-lg-6 col-md-12 mb-3">
-            <label>Protocolo de Solicitação de Refúgio</label>
+            <label>{{ 'edituser.protocol' | translate }}</label>
             <input type="text" formControlName="protocoloSolicitacaoRefugio" class="form-control"/>
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Passaporte</label>
+            <label>{{ 'edituser.passport' | translate }}</label>
             <input type="text" formControlName="passaporte" class="form-control"/>
           </div>
 
           <div class="mt-4 text-center" *ngIf="!isView; else elseBlock">
-            <button matStepperNext class="btn btn-primary col-12" type="submit" (click)="onSubmit()">Salvar e continuar
+            <button matStepperNext class="btn btn-primary col-12" type="submit" (click)="onSubmit()">
+              {{ 'edituser.savecontinue' | translate }}
             </button>
-            <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">Cancelar</button>
+            <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">
+              {{ 'edituser.cancel' | translate }}
+            </button>
           </div>
           <ng-template #elseBlock>
             <button matStepperNext
             class="btn btn-primary col-12"
             type="submit">
-              Continuar
+              {{ 'edituser.continue' | translate }}
             </button>
           </ng-template>
         </div>
@@ -180,7 +186,7 @@
       <form class="needs-validation" novalidate [formGroup]="form">
         <div class="row mb-3 mt-4">
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Tem conta bancária no Brasil?</label>
+            <label>{{ 'edituser.bankacc' | translate }}</label>
             <select class="form-select" formControlName="hasContaBancariaNoBrasil">
               <option selected>selecione...</option>
               <option value=true>Sim</option>
@@ -189,12 +195,12 @@
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Idioma que fala e compreende</label>
+            <label>{{ 'edituser.lang' | translate }}</label>
             <input type="text" class="form-control" formControlName="idioma">
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Tem familiares no Brasil?</label>
+            <label>{{ 'edituser.hasfamilybrasil' | translate }}</label>
             <select class="form-select" formControlName="hasFamiliaresNoBrasil">
               <option selected>selecione...</option>
               <option value=true>Sim</option>
@@ -203,7 +209,7 @@
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Via de Entrada</label>
+            <label>{{ 'edituser.entyway' | translate }}</label>
             <select class="form-select" formControlName="viaDeEntrada">
               <option selected>selecione...</option>
               <option value="TERRESTRE">Terrestre</option>
@@ -213,7 +219,7 @@
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Genero</label>
+            <label>{{ 'edituser.gender' | translate }}</label>
             <select class="form-select" formControlName="genero">
               <option selected>selecione...</option>
               <option value=null>Prefiro Não Dizer</option>
@@ -225,7 +231,7 @@
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Cor ou Raça</label>
+            <label>{{ 'edituser.color' | translate }}</label>
             <select class="form-select" formControlName="corRaca">
               <option selected>selecione...</option>
               <option value="AMARELA">Amarela</option>
@@ -239,83 +245,86 @@
         </div>
 
         <fieldset>
-          <legend>Escolaridade</legend>
+          <legend>{{ 'edituser.schooling' | translate }}</legend>
 
         </fieldset>
         <div class="row mb-3 mt-4">
 
           <div class="col-lg-3 col-md-3 mb-3">
-            <label class="control-label">Não possuo escolaridade</label>
+            <label class="control-label">{{ 'edituser.noschooling' | translate }}</label>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio00" value=true
                      formControlName="hasEscolaridade" (click)="onSemEscolaridade()">
-              <label class="form-check-label">Não Possuo escolaridade</label>
+              <label class="form-check-label">{{ 'edituser.noschooling' | translate }}</label>
             </div>
           </div>
 
           <div class="col-lg-2 col-md-3 mb-3">
-            <label class="control-label">Ensino Fundamental</label>
+            <label class="control-label">{{ 'edituser.elementary' | translate }}</label>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio2" value=false
                      formControlName="hasEnsinoFundamental" (click)="onComEscolaridade()">
-              <label class="form-check-label">Incompleto</label>
+              <label class="form-check-label">{{ 'edituser.incomplete' | translate }}</label>
             </div>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio1" value=true
                      formControlName="hasEnsinoFundamental" (click)="onComEscolaridade()">
-              <label class="form-check-label">Completo</label>
+              <label class="form-check-label">{{ 'edituser.complete' | translate }}</label>
             </div>
           </div>
 
           <div class="col-lg-2 col-md-3 mb-3">
-            <label class="control-label">Ensino Medio</label>
+            <label class="control-label">{{ 'edituser.highschool' | translate }}</label>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio4" value=false formControlName="hasEnsinoMedio" (click)="onComEscolaridade()">
-              <label class="form-check-label">Incompleto</label>
+              <label class="form-check-label">{{ 'edituser.incomplete' | translate }}</label>
             </div>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio3" value=true formControlName="hasEnsinoMedio" (click)="onComEscolaridade()">
-              <label class="form-check-label">Completo</label>
+              <label class="form-check-label">{{ 'edituser.complete' | translate }}</label>
             </div>
           </div>
 
           <div class="col-lg-2 col-md-3 mb-3">
-            <label class="control-label">Ensino Superior</label>
+            <label class="control-label">{{ 'edituser.college' | translate }}</label>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio6" value=false
                      formControlName="hasEnsinoSuperior" (click)="onComEscolaridade()">
-              <label class="form-check-label">Incompleto</label>
+              <label class="form-check-label">{{ 'edituser.incomplete' | translate }}</label>
             </div>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio5" value=true
                      formControlName="hasEnsinoSuperior" (click)="onComEscolaridade()">
-              <label class="form-check-label">Completo</label>
+              <label class="form-check-label">{{ 'edituser.complete' | translate }}</label>
             </div>
           </div>
 
           <div class="col-lg-2 col-md-3 mb-3">
-            <label class="control-label">Pós Graduação</label>
+            <label class="control-label">{{ 'edituser.graduate' | translate }}</label>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio8" value=false
                      formControlName="hasPosGraduacao" (click)="onComEscolaridade()">
-              <label class="form-check-label">Incompleto</label>
+              <label class="form-check-label">{{ 'edituser.incomplete' | translate }}</label>
             </div>
             <div class="form-check form-check">
               <input class="form-check-input" type="radio" id="inlineRadio7" value=true formControlName="hasPosGraduacao" (click)="onComEscolaridade()">
-              <label class="form-check-label">Completo</label>
+              <label class="form-check-label">{{ 'edituser.complete' | translate }}</label>
             </div>
           </div>
 
           <div class="mt-4 text-center" *ngIf="!isView; else elseBlock">
-            <button matStepperNext class="btn btn-primary col-12" type="submit" (click)="onSubmit()">Salvar e continuar
+            <button matStepperNext class="btn btn-primary col-12" type="submit" (click)="onSubmit()">
+              {{ 'edituser.savecontinue' | translate }}
             </button>
-            <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">Cancelar</button>
+            <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">
+              {{ 'edituser.cancel' | translate }}
+            </button>
           </div>
           <ng-template #elseBlock>
             <button matStepperNext
             class="btn btn-primary col-12"
             type="submit">
-              Continuar
+              {{ 'edituser.continue' | translate }}
             </button>
           </ng-template>
         </div>
@@ -327,33 +336,37 @@
       <form class="needs-validation" novalidate [formGroup]="form">
         <div class="row mb-3">
           <div class="col-lg-6 col-md-12 mb-3">
-            <label>Estado</label>
+            <label>{{ 'edituser.state' | translate }}</label>
             <input type="text" formControlName="estado" class="form-control"/>
           </div>
 
           <div class="col-lg-6 col-md-12 mb-3">
-            <label>Cidade</label>
+            <label>{{ 'edituser.city' | translate }}</label>
             <input type="text" formControlName="cidade" class="form-control"/>
           </div>
 
           <div class="col-lg-6 col-md-12 mb-3">
-            <label>Rua</label>
+            <label>{{ 'edituser.street' | translate }}</label>
             <input type="text" formControlName="rua" class="form-control"/>
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>Numero</label>
+            <label>{{ 'edituser.number' | translate }}</label>
             <input type="text" formControlName="numero" class="form-control"/>
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>CEP</label>
+            <label>{{ 'edituser.postalcode' | translate }}</label>
             <input type="text" formControlName="cep" class="form-control"/>
           </div>
 
           <div class="mt-4 text-center" *ngIf="!isView; else elseBlockEnd">
-            <button class="btn btn-primary col-12" type="submit" (click)="onSubmitFinal()">Salvar</button>
-            <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">Cancelar</button>
+            <button class="btn btn-primary col-12" type="submit" (click)="onSubmitFinal()">
+              {{ 'edituser.save' | translate }}
+            </button>
+            <button class="mt-3 btn btn-outline-dark col-12" type="submit" (click)="onCancel()">
+              {{ 'edituser.cancel' | translate }}
+            </button>
           </div>
           <ng-template #elseBlockEnd>
             <button matStepperNext

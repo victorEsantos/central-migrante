@@ -2,7 +2,7 @@
 <form class="needs-validation" novalidate [formGroup]="form">
   <div class="form-group">
     <div class="mb-3">
-      <label for="nome" class="form-label">Nome</label>
+      <label for="nome" class="form-label">{{ 'user.name' | translate }}</label>
       <input type="text" class="form-control" id="nome" formControlName="nome"
         [ngClass]="{'is-invalid': submitted && hasError('nome')}">
       <div *ngIf="hasError('nome')" class="invalid-feedback">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="user" class="form-label">Usuario</label>
+      <label for="user" class="form-label">{{ 'user.user' | translate }}</label>
       <input type="text" class="form-control" id="user" formControlName="user"
         [ngClass]="{'is-invalid': submitted && hasError('user')}">
       <div *ngIf="hasError('user')" class="invalid-feedback">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="email">Email address</label>
+      <label for="email">{{ 'user.email' | translate }}</label>
       <input type="email" class="form-control" id="email" formControlName="email"
         [ngClass]="{'is-invalid': submitted && hasError('email')}">
       <div *ngIf="hasError('email')" class="invalid-feedback">
@@ -52,7 +52,7 @@
 
     <div class="row mb-3">
       <div class="col-lg-6 col-md-12 mb-3">
-        <label>Password</label>
+        <label>{{ 'user.pass' | translate }}</label>
         <input type="password" formControlName="senha" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && hasError('senha') }" />
         <div *ngIf="submitted && hasError('senha')" class="invalid-feedback">
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-12 mb-3">
-        <label>Confirmar senha</label>
+        <label>{{ 'user.confirmpass' | translate }}</label>
         <input type="password" formControlName="confirmaSenha" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && hasError('confirmaSenha') }" />
         <div *ngIf="submitted && hasError('confirmaSenha')" class="invalid-feedback">
