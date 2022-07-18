@@ -1,0 +1,57 @@
+{
+  "login": "Login",
+  "username": "Nombre del usuario",
+  "password": "Contraseña",
+  "log-in": "Para entrar",
+  "welcome": "Bienvenido",
+  "desc-wellcome": "pt-br Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting",
+  "continuehere": "Continúe registrándose aquí",
+
+  "user": {
+    "name": "Nombre",
+    "user": "Usuario (se le informará de que entre em el sistema)",
+    "email": "Email",
+    "pass": " Contraseña ",
+    "confirmpass": "Confirmar contraseña "
+  },
+
+  "edituser": {
+    "statecrossborder": "Estado de Brasil donde cruzó la frontera",
+    "crnmexpiration": "Espiración",
+    "nacionality": "Nacionalidad",
+    "citybirth": "Ciudad de nacimiento",
+    "phone": "Teléfono",
+    "protocol": "Protocolo de Solicitud de refugio",
+    "passport": "Pase",
+    "savecontinue": "Guardar y Continuar",
+    "save": "Salvar",
+    "cancel": "Para Cancelar",
+    "continue": "Para Continuar",
+    "bankacc": " ¿Tienes una cuenta bancaria en Brasil?",
+    "lang": " Idioma que habla y entiende ",
+    "hasfamilybrasil": " ¿Tiene familiares en Brasil?",
+    "entryway": " forma de entrada ",
+    "gender": "Género",
+    "color": " color o raza ",
+    "schooling": " educación ",
+    "noschooling": " no tengo escolaridad ",
+    "complete": "Completo",
+    "incomplete": "Incompleto",
+    "elementary": " Enseñanza fundamental ",
+    "highschool": " Escuela secundaria ",
+    "college": " Enseñanza superior ",
+    "graduate": " Posgraduación ",
+    "state": "Estado",
+    "city": " Ciudad ",
+    "street": " La carretera ",
+    "number": "Número",
+    "postalcode": " Código Postal",
+    "select": "Seleccione..."
+  },
+
+  "toolbar": {
+    "edituser": " Editar mi usuario ",
+    "listusers": " Lista de usuarios ",
+    "logout": " Salir "
+  }
+}

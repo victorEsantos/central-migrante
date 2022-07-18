@@ -24,6 +24,7 @@
     "protocol": "Protocolo de Solicitação de Refúgio",
     "passport": "Passaporte",
     "savecontinue": "Salvar e Continuar",
+    "save": "Salvar",
     "cancel": "Cancelar",
     "continue": "Continuar",
     "bankacc": "Tem conta bancária no Brasil?",
@@ -44,14 +45,13 @@
     "city": "Cidade",
     "street": "Rua",
     "number": "Número",
-    "psotalcode": "Cep"
+    "postalcode": "Cep",
+    "select": "Selecione..."
   },
 
   "toolbar": {
     "edituser": "Editar Meu Usuário",
     "listusers": "Listar Usuários",
     "logout": "Sair"
-
   }
-
 }

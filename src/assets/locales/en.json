@@ -1,7 +1,57 @@
 {
-  "banner": {
-    "hello" : "Hellou",
-    "world": "world",
-    "change_lang_label": "Change The Language From Below Drop Down"
+  "login": "Login",
+  "username": "User name",
+  "password": "Password",
+  "log-in": "Login",
+  "welcome": "Welcome",
+  "desc-wellcome": "pt-br Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting",
+  "continuehere": "Continue here",
+
+  "user": {
+    "name": "Name",
+    "user": "User (You will be informed that you enter the system)",
+    "email": "Email",
+    "pass": "Password",
+    "confirmpass": "Confirm Password"
+  },
+
+  "edituser": {
+    "statecrossborder": "State of Brazil where you crossed the border",
+    "crnmexpiration": "Exhalation",
+    "nacionality": "Nationality",
+    "citybirth": "City of birth",
+    "phone": "Phone number",
+    "protocol": "Refugee Application Protocol",
+    "passport": "Passport",
+    "savecontinue": "Save and continue",
+    "save": "Save",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "bankacc": "Do you have a bank account in Brazil?",
+    "lang": "Languages that are missing and understand",
+    "hasfamilybrasil": "Do you have relatives in Brazil?",
+    "entryway": " Entryway",
+    "gender": "Gender",
+    "color": " color ",
+    "schooling": " Schooling ",
+    "noschooling": " No schooling",
+    "complete": "Complete",
+    "incomplete": "Incomplete ",
+    "elementary": " Elementary ",
+    "highschool": " High school",
+    "college": " College ",
+    "graduate": " Graduate ",
+    "state": "State",
+    "city": " City ",
+    "street": " Street ",
+    "number": "Number",
+    "postalcode": " Postal code",
+    "select": "Select..."
+  },
+
+  "toolbar": {
+    "edituser": " Edit user",
+    "listusers": " List users ",
+    "logout": " Logout "
   }
 }

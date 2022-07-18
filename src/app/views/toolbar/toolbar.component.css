@@ -12,3 +12,7 @@
   a{
     color: white;
   }
+
+  .navbar-nav{
+    width: 100%;
+  }

@@ -18,7 +18,7 @@ export interface Usuario {
   telefone: string;
   cpf: string;
   crnm: string;
-  crnmvencimento: Date,
+  crnmVencimento: Date,
   protocoloSolicitacaoRefugio: string;
   passaporte: string;
   ctps: string;

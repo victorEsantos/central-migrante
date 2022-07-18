@@ -105,7 +105,13 @@
         <div class="row mb-3 mt-4">
           <div class="col-lg-6 col-md-12 mb-3">
             <label>{{ 'edituser.statecrossborder' | translate }}</label>
-            <input type="text" formControlName="estadoOndeAtravessouFronteira" class="form-control"/>
+            <select class="form-select" formControlName="estadoOndeAtravessouFronteira">
+              <option value=null>{{ 'edituser.select' | translate }}</option>
+              <option *ngFor="let item of estados" [value]="item">
+                {{ item }}
+              </option>
+            </select>
+
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
@@ -116,7 +122,7 @@
           <div class="col-lg-3 col-md-12 mb-3">
             <mat-form-field appearance="fill">
               <mat-label>CRNM {{ 'edituser.crnmexpiration' | translate }}</mat-label>
-              <input matInput [matDatepicker]="pickerCRNM" formControlName="crnmvencimento">
+              <input matInput [matDatepicker]="pickerCRNM" formControlName="crnmVencimento">
               <mat-hint>DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matSuffix [for]="pickerCRNM"></mat-datepicker-toggle>
               <mat-datepicker #pickerCRNM></mat-datepicker>
@@ -188,7 +194,7 @@
           <div class="col-lg-3 col-md-12 mb-3">
             <label>{{ 'edituser.bankacc' | translate }}</label>
             <select class="form-select" formControlName="hasContaBancariaNoBrasil">
-              <option selected>selecione...</option>
+              <option value=null>{{ 'edituser.select' | translate }}</option>
               <option value=true>Sim</option>
               <option value=false>Não</option>
             </select>
@@ -202,16 +208,16 @@
           <div class="col-lg-3 col-md-12 mb-3">
             <label>{{ 'edituser.hasfamilybrasil' | translate }}</label>
             <select class="form-select" formControlName="hasFamiliaresNoBrasil">
-              <option selected>selecione...</option>
+              <option value=null>{{ 'edituser.select' | translate }}</option>
               <option value=true>Sim</option>
               <option value=false>Não</option>
             </select>
           </div>
 
           <div class="col-lg-3 col-md-12 mb-3">
-            <label>{{ 'edituser.entyway' | translate }}</label>
+            <label>{{ 'edituser.entryway' | translate }}</label>
             <select class="form-select" formControlName="viaDeEntrada">
-              <option selected>selecione...</option>
+              <option value=null>{{ 'edituser.select' | translate }}</option>
               <option value="TERRESTRE">Terrestre</option>
               <option value="AEREO">Aéreo</option>
               <option value="MARITIMO">Marítimo</option>
@@ -221,8 +227,8 @@
           <div class="col-lg-3 col-md-12 mb-3">
             <label>{{ 'edituser.gender' | translate }}</label>
             <select class="form-select" formControlName="genero">
-              <option selected>selecione...</option>
-              <option value=null>Prefiro Não Dizer</option>
+              <option value=null>{{ 'edituser.select' | translate }}</option>
+              <option value="PREFIRO_NAO_DIZER">Prefiro Não Dizer</option>
               <option value="MASCULINO">Masculino</option>
               <option value="FEMININO">Feminino</option>
               <option value="TRANS">Transgênero</option>
@@ -233,7 +239,7 @@
           <div class="col-lg-3 col-md-12 mb-3">
             <label>{{ 'edituser.color' | translate }}</label>
             <select class="form-select" formControlName="corRaca">
-              <option selected>selecione...</option>
+              <option value=null>{{ 'edituser.select' | translate }}</option>
               <option value="AMARELA">Amarela</option>
               <option value="BRANCA">Branca</option>
               <option value="INDIGENA">Indígena</option>
